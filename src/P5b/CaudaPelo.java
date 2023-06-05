@@ -2,7 +2,7 @@ package P5b;
 
 // Renomeie a classe cauda para caudapelo. Adicione também a classe caudaescamas. Todos os pets terão uma cauda, mas o peixe possui escamas.
 
-public class CaudaPelo {
+public class CaudaPelo extends Cauda{
 	private String forma;
 	private String tipoPelo;
 	
@@ -10,7 +10,8 @@ public class CaudaPelo {
 		this.forma = forma;
 		this.tipoPelo = tipoPelo;
 	}
-	public void printCauda() {
+	public void print() {
 		System.out.println("  Cauda:  " + this.forma + " com " + this.tipoPelo);
 	}
 }
+

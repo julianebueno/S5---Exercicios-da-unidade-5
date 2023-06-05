@@ -2,42 +2,20 @@ package P5b;
 
 // todos os pets terão um nome e raça. Porém, para os peixes, não é relevante saber seu gênero.
 
-public class Cao extends Pet{             // Associação: meuDono é uma referência da 
-	private Dono   meuDono;  // classe Dono e também atributo da classe Cão
-	
+public class Cao extends Pet { // Associação: meuDono é uma referência
 	private String genero;
-	private CaudaPelo  minhaCauda; // Composição: Cão possui Cauda
-
-	public Cao(String nome, String raca, int idade, String genero, String forma, String tipoPelo) {
-		super(nome, raca, idade);
-		this.genero = genero;
-		this.minhaCauda = new CaudaPelo (forma, tipoPelo); 
-	}                          
-	public void setMeuDono(Dono meuDono) {
-		this.meuDono = meuDono;
+	public Cao(String nome, String raca, String genero,
+	int idade, String forma, String tipoPelo) {
+	super(nome, raca, idade, new CaudaPelo(forma, tipoPelo));
+	this.genero = genero;
 	}
-	public void printCao() {
-		System.out.println("  Nome:   " + nome);
-		System.out.println("  Raça:   " + this.raca);
-		System.out.println("  Gênero: " + this.genero);
-		System.out.println("  Idade:  " + this.idade);
-		minhaCauda.printCauda();
-		System.out.println();
+	@Override
+	public void print() {
+	super.print();
+	System.out.println(" Gênero: " + this.genero);
 	}
-	public void realizarRefeicao() {
-		System.out.println(this.nome + " fazendo sua refeição.");
-	}
-	public void agradarDono() {
-		this.meuDono.receberFesta(); // Invoca método da classe Dono
-	}
-
-	@Override //caso mude na classe pai, aqui mostra o erro por não estar mais conectados
-    public String imprimir() {
-        return "Marca: " + getMarca() + ", Motor: " + getMotor() + " Porta malas: " + getPortaMalas() + " litros."; 				
-    }
-
-
-}
+   }
+   
 
 
 

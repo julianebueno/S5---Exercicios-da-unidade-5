@@ -4,64 +4,78 @@ package P5b;
 
 public class Dono {
 	private String nome;
-	private Pet[]  pets;  // Dono está associado a um vetor pets de Pet
+	private Pet pet; // Dono está associado com seu Pet
 
 	public Dono(String nome) {
-		this.nome = nome;   // Cria uma instância do vetor;
-		pets = new Pet[3];  // vetor preparado para receber até 3 pets
-	}						
-	public void addPet (int index, Cao pet) { // inclui um objeto de cão
-		this.pets[index] = pet;             // no vetor pets
+		this.nome = nome;
 	}
 
-
-	// public void alimentarCaes() {
-	// 	for(int i=0; i< 3; i++)            // Invoca realizarRefeicao
-	// 		pets[i].realizarRefeicao();  // de cada objeto de pets
-	// }
-	// public void receberFesta() {        // Invoca o método receberFesta
-	// 	for(int i=0; i< 3; i++)       // de cada objeto de pets
-	// 		System.out.println(this.nome + " está recebendo festa de " 
-    //                                 + this.pets[i].getNomeCao());
-	// }
-	public void listarPets() {      // lista todos os pets
-		for(int i=0; i< 3; i++)
-			System.out.println(pets.imprimir());
+	public void setPet(Pet pet) {
+		this.pet = pet;
 	}
 
+	public Pet getPet() {
+		return this.pet;
+	}
+
+	public void alimentar() {
+		pet.realizarRefeicao();
+	}
+
+	public void receberFesta() {
+		System.out.println(this.nome + " está recebendo festa de " + this.pet.getNome());
+	}
 
 
 	public static void main(String[] args) {
 
-        // var maria = new ArrayList<Carro>();
+		Dono maria = new Dono("Maria");
+		System.out.println("\n*** Cão de " + maria.nome);
+		Cao pipoca = new Cao("Pipoca", "Beagle", "Fêmea", 3, "Enrolada", "Pêlo curtinho");
+		maria.setPet(pipoca); // Torna Pipoca o Pet de Maria
+		pipoca.setMeuDono(maria); // Associa Pipoca com Maria
+		maria.getPet().print();
+		maria.alimentar(); // Maria alimenta o seu cão Pipoca
+		pipoca.agradarDono(); // Pipoca agrada sua dona Maria
 
-		Dono  maria  = new Dono ("Maria");
+		System.out.println("\n*** Gata de " + maria.nome);
+		Gato mel = new Gato("Mel", "Siamesa", "Fêmea", 2, "Lisa", "Pêlo liso");
+		maria.setPet(mel); // Troca o Pet de Maria para a gata Mel
+		mel.setMeuDono(maria); // Associa Mel com Maria
+		maria.getPet().print();
+		maria.alimentar(); // Maria alimenta Mel
+		mel.agradarDono(); // Mel agrada sua dona Maria
 
-		Cao pipoca = new Cao ("Pipoca", "Beagle", 3, "Fêmea", "Enrolada", "Pêlo curtinho");
-
-
-		
-		// Cao   bruce  = new Cao  ("Bruce", "Pug", "Macho", 2, "Caracol", "Pêlo curtinho");
-		// Cao   jujuba = new Cao  ("Jujuba", "Maltês", "Fêmea", 1, "Enrolada", "Pêlo longo");
-
-
-		maria.addPet   (0, pipoca); // Pipoca está na posição 0 de pets
-
-		// maria.addPet   (1, bruce);  // Bruce  está na posição 1 de pets
-		// maria.addPet   (2, jujuba); // jujuba está na posição 2 de pets
-
-		pipoca.setMeuDono (maria);     // associa Pipoca com Maria
-		// bruce.setMeuDono  (maria);     // associa Bruce com Maria
-		// jujuba.setMeuDono (maria);     // associa Jujuba com Maria
-
-		//Lista todos os cães de Maria
-		System.out.println("Cãozinhos de " + maria.nome);
-		maria.listarPets();
-
-		// maria.alimentarCaes();  // Maria alimenta todos os  cães 
-		// maria.receberFesta();   // Maria recebe festa de todos os cães
+		System.out.println("\n*** Peixe de " + maria.nome);
+		Peixe nemo = new Peixe("Nemo", "Peixe Palhaço", 1, "Laranja");
+		maria.setPet(nemo); // Troca o Pet de Maria para o peixe Nemo
+		nemo.setMeuDono(maria); // Associa Nemo com Maria
+		maria.getPet().print();
+		nemo.agradarDono(); // Nemo agrada sua dona Maria
 	}
 }
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // import java.util.*;
